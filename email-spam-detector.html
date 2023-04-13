@@ -1,0 +1,120 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+
+      <style>
+      /* Global styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #e4f1fe;
+        color: #22313f;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Form styles */
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      textarea {
+        padding: 10px;
+        border-radius: 5px;
+        border-color: #22313f;
+        border: none;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        margin-bottom: 20px;
+        height: 100px;
+      }
+
+      input[type="email"] {
+        padding: 10px;
+        border-radius: 5px;
+        border-color: #22313f;
+        border: none;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        margin-bottom: 20px;
+      
+      }
+
+      button[type="submit"] {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #8dc6ff;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #22313f;
+      }
+
+      </style>
+
+      <title>Spam Detector</title>
+    </head>
+    <body>
+      <div class="container">
+        <h1>Enter email details to detect if spam</h1>
+    
+        <form id="spam-form">
+          <label for="email-id">Email ID:</label>
+          <div id="email-id-input">
+            <input id="email-id" type="email" />
+          </div>
+    
+          <label for="email-content">Email Content:</label>
+          <div id="email-content-input">
+            <textarea id="email-content"></textarea>
+          </div>
+    
+          <button type="submit">Check Spam</button>
+        </form>
+      </div>
+    
+      <script>
+        const form = document.getElementById("spam-form");
+    
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+    
+          const emailId = document.getElementById("email-id").value.toLowerCase();
+            
+          const emailContent = document.getElementById("email-content").value.toLowerCase();
+    
+          const response = await fetch("", {
+            method: "POST",
+            body: JSON.stringify({ emailId, content: emailContent }),
+            headers: { "Content-Type": "application/json" },
+          });
+    
+          const result = await response.json();
+    
+          if (result.isSpam === 1) {
+            alert(`This email is spam! Number of reports: ${result.no_of_reports}`);
+          } 
+          else {
+            alert(`This email is not spam. Number of reports: ${result.no_of_reports}`);
+          }
+        });
+      </script>
+    </body>
+    
+  </html>
