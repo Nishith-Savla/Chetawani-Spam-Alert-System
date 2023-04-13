@@ -1,3 +1,6 @@
 [submodule "chetawani-flutter"]
 	path = chetawani-flutter
 	url = https://github.com/Nishith-Savla/chetawani
+[submodule "chetawani-email-spam-detection"]
+	path = chetawani-email-spam-detection
+	url = https://github.com/mrudul2/email-spam-detection/
