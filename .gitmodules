@@ -4,3 +4,6 @@
 [submodule "chetawani-email-spam-detection"]
 	path = chetawani-email-spam-detection
 	url = https://github.com/mrudul2/email-spam-detection/
+[submodule "chetawani-flask-backend"]
+	path = chetawani-flask-backend
+	url = https://github.com/narayanibokde9/kavach-flask-backend
